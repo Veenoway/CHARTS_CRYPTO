@@ -6,7 +6,7 @@
   }
   
   body {
-    background-color: #263238;
+    background-color: #8898a0;
   }
   
   ul {
@@ -19,11 +19,22 @@
   
   .coinlist-item {
     display: flex;
+    background-color: #a0b2bc;
+    border: 1px solid #cce3ef;
+    box-shadow:0 0 2px white
+  }
+  .coinlist-item:hover {
+    display: flex;
+    background-color: #cce3ef;
+    border: 1px solid #cce3ef;
+    box-shadow:0 0 5px white
   }
   
   .coinsummary {
-    border-color: white !important;
-    border-style: outset !important;
+    /* border-color: white !important; */
+    /* border-style: outset !important; */
+    border: none !important;
+    box-shadow: 0 0 10px white
   }
   
   .coin-data-category {
@@ -31,11 +42,84 @@
   }
   
   .delete-icon {
-    display: none;
+    display: none ;
     position: absolute;
     right: 6px;
   }
-  
-  .coin:hover .delete-icon {
+
+  .delete-icon:hover {
+    display: block ;
+  }
+
+  #delete{
+      display:none
+  }
+
+  #delete:hover{
+    display: block ;
+  }   
+
+  .coin:hover #delete{
     display: block;
   }
+
+  .mright{
+      margin-right:20px;
+  }
+  .mright2{
+    margin-right:5px;
+  }
+
+  :root {
+	--yellow: #fe0a0a;
+	--red: #f1f1f1;
+	--blue: #00dbf9;
+	--violet: #dcdcdc;
+}
+
+div.container-loading {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.container-loading > div {
+	width: 2vw;
+	height: 2vw;
+	border-radius: 100%;
+	margin: 1.5vw;
+	background-image: linear-gradient(145deg, rgba(255,255,255,0.5) 0%, rgba(0,0,0,0) 100%);
+	animation: bounce 1s 0.5s linear infinite;
+}
+.yellow-loading {
+	background-color: var(--yellow);
+}
+
+.red-loading {
+	background-color: var(--red);
+	animation-delay: 0.1s;
+}
+
+.blue-loading {
+	background-color: var(--blue);
+	animation-delay: 0.2s;
+}
+
+.violet-loading {
+	background-color: var(--violet);
+	animation-delay: 0.3s;
+}
+
+@keyframes bounce {
+	0%, 50%, 100% {
+		transform: scale(1);
+		filter: blur(0px);
+	}
+	25% {
+		transform: scale(0.6);
+		filter: blur(3px);
+	}
+	75% {
+		filter: blur(3px);
+		transform: scale(1.4);
+	}
+}
