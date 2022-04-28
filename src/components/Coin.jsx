@@ -18,6 +18,7 @@ const Coin = ({coin, deleteCoin}) => {
                     {coin.price_change_percentage_24h} %
                 </span>
                 <i onClick={(e) => {
+                    e.preventDefault();
                     deleteCoin(coin.id)
                 }} className="delete-icon far fa-times-circle text-danger" id="delete"></i>
             </li>
