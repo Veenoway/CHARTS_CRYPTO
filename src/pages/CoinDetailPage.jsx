@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
 import HistoryChart from "../components/HistoryChart";
-import CoinForm from "../components/CoinData";
+import CoinData from "../components/CoinData";
 import coinGecko from "../apis/coinGecko";
 
 
@@ -10,7 +10,7 @@ const CoinDetailPage = () => {
     const { id } = useParams();
     const [ coinData, setCoinData ] = useState({});
     const [ isLoading, setIsLoading] = useState(false);
-
+    
     const formatData = (data) => {
         return data.map((el) => {
           return {
@@ -19,6 +19,7 @@ const CoinDetailPage = () => {
           };
         });
       };
+
     useEffect(() => {
         
         const fetchData = async () => { 
@@ -54,11 +55,10 @@ const CoinDetailPage = () => {
                 }),  
             ]);
             setCoinData({
-                week: week.data.prices,
-                month: month.data.prices,
-                year: year.data.prices,
+                week: formatData(week.data.prices),
+                month: formatData(month.data.prices),
+                year: formatData(year.data.prices),
                 detail: detail.data[0]
-                // detail: detail.data[0]
             })
             setIsLoading(false);
         }
@@ -69,13 +69,17 @@ const CoinDetailPage = () => {
 
     const renderData = () => {
         if(isLoading) {
-            return <div>Loading...</div>
+             return <div className="container-loading">
+            <div className="yellow-loading"></div>
+            <div className="red-loading"></div>
+            <div className="blue-loading"></div>
+            <div className="violet-loading"></div>
+        </div>
         }
         return (
             <div className="coinlist">
-                
-                <CoinForm />
-                <HistoryChart />
+                <HistoryChart data={coinData}/>
+                <CoinData data={coinData.detail}/>
             </div>
         );
     };
