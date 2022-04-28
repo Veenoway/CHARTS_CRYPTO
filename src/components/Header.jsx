@@ -1,10 +1,10 @@
 import React from 'react';
-
+import Veeno from "../img/blanc-bleu.png"
 
 const Header = () => {
     return(
-        <div>
-            <h1 className="text-center text-warning mt-3 mb-4">Veeno</h1>
+        <div className="d-flex justify-content-center align-items-center">
+            <img src={Veeno} width="120"/>
         </div>
     )
 }
