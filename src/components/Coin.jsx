@@ -3,9 +3,9 @@ import { Link} from "react-router-dom";
 
 const Coin = ({coin, deleteCoin}) => {
     return(
-        <Link  className="text-decoration-none my-1 coin">
+        <Link  to={`/coins/${coin.id}`} className="text-decoration-none my-1 coin">
             <li className="coinlist-item list-group-item list-group-item-action d-flex justify-content-between align-items-center text-dark rounded">
-                <img src={coin.image} className="coinlist-image"/>
+                <img src={coin.image} height="50"className="coinlist-image"/>
                 <span className="text-decoration-none">{coin.name}</span>
                 <span className="text-decoration-none">{coin.current_price} $</span>
                 <span className={coin.price_change_percentage_24h < 0 ? "text-danger mright" : "text-success mright"} >
